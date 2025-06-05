@@ -1,0 +1,6 @@
+export DDK_PATH=/home/ma-user/Ascend/ascend-toolkit/8.0.0.alpha003/
+export NPU_HOST_LIB=/home/ma-user/Ascend/ascend-toolkit/8.0.0.alpha003/aarch64-linux/devlib
+/home/ma-user/Ascend/ascend-toolkit/8.0.0.alpha003/python/site-packages/bin/msopst run -i ./Abs_case_all_type.json -soc Ascend910B1 -out ./output -conf msopst.ini
+/home/ma-user/Ascend/ascend-toolkit/8.0.0.alpha003/python/site-packages/bin/msopst run -i ./Radius_case_all_type.json -soc Ascend910B1 -out ./output -conf msopst.ini
+/home/ma-user/Ascend/ascend-toolkit/8.0.0.alpha003/python/site-packages/bin/msopst run -i ./Radius_case_all_type.json -soc Ascend910B1 -out ./output -conf msopst.ini
+

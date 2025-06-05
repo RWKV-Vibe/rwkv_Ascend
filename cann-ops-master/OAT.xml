@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <oatconfig>
+        <licensefile></licensefile>
+        <policylist>
+            <policy name="projectPolicy" desc="">
+                <policyitem type="license" name="CANN License" path=".*" rule="may" group="defaultGroup" filefilter="defaultPolicyFilter" desc=""/>
+                <policyitem type="copyright" name="Huawei Technologies Co., Ltd." path=".*" rule="may" group="defaultGroup" filefilter="copyrightPolicyFilter" desc=""/>
+                <policyitem type="filetype" name="!binary" path=".*" rule="must" group="defaultGroup" filefilter="binaryFileTypePolicyFilter" desc=""/>
+            </policy>
+        </policylist>
+        <filefilterlist>
+            <filefilter name="defaultPolicyFilter" desc="Filters for compatibility,license header policies">
+                <filteritem type="filename" name="OWNERS" desc="Describe commite owner"/> 
+                <filteritem type="filename" name="OAT.xml" desc="Describe commite owner"/> 
+                <filteritem type="filename" name=".gitmodules" desc="git submodule "/>
+            </filefilter>
+            <filefilter name="copyrightPolicyFilter" desc="Filters for copyright header policies">
+                <filteritem type="filename" name="OWNERS" desc="Describe commite owner"/>
+                <filteritem type="filename" name=".gitmodules" desc="git submodule "/>
+            </filefilter>
+            <filefilter name="licenseFileNamePolicyFilter" desc="Filters for LICENSE file policies">
+            </filefilter>
+            <filefilter name="readmeFileNamePolicyFilter" desc="Filters for README file policies">
+            </filefilter>
+            <filefilter name="readmeOpenSourcefileNamePolicyFilter" desc="Filters for README.OpenSource file policies">
+            </filefilter>
+            <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies">
+            </filefilter>
+
+        </filefilterlist>
+        <licensematcherlist>
+            <licensematcher name="CANN License" desc="License for CANN Open Software">
+                <licensetext name="
+                    * This file is a part of the CANN Open Software.
+                    * Licensed under CANN Open Software License Agreement Version 1.0 (the &quot;License&quot;).
+                    * Please refer to the License for details. You may not use this file except in compliance with the License.
+                    * THIS SOFTWARE IS PROVIDED ON AN &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+                    * INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
+                    * See LICENSE in the root of the software repository for the full text of the License.
+                    " desc=""/>
+            </licensematcher>
+        </licensematcherlist>
+    </oatconfig>
+</configuration>
