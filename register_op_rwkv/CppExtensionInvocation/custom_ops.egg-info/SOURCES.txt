@@ -1,0 +1,14 @@
+README.md
+setup.py
+/root/Main/wkv7/CppExtensionInvocation/csrc/registration.cpp
+/root/Main/wkv7/CppExtensionInvocation/csrc/wkv7.cpp
+custom_ops/__init__.py
+custom_ops/wkv7.py
+custom_ops.egg-info/PKG-INFO
+custom_ops.egg-info/SOURCES.txt
+custom_ops.egg-info/dependency_links.txt
+custom_ops.egg-info/top_level.txt
+custom_ops.egg-info/.ipynb_checkpoints/PKG-INFO-checkpoint
+custom_ops.egg-info/.ipynb_checkpoints/dependency_links-checkpoint.txt
+test/test_add_custom.py
+test/test_add_custom_graph.py
