@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -s -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -shared -Wl,-soname,libop_host_aclnnExc.so -o libop_host_aclnnExc.so CMakeFiles/op_host_aclnnExc.dir/op_host_aclnn_exc_stub.cpp.o   -L/usr/local/Ascend/ascend-toolkit/latest/lib64  -lexe_graph -lregister -ltiling_api -lc_sec 

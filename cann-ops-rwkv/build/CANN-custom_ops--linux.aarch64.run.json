@@ -1,0 +1,26 @@
+{
+  "componentGroups" : {},
+  "components" : {},
+  "errorOnAbsoluteInstallDestination" : false,
+  "formatVersionMajor" : 1,
+  "formatVersionMinor" : 0,
+  "installationTypes" : {},
+  "packageDescriptionFile" : "/usr/share/cmake-3.16/Templates/CPack.GenericDescription.txt",
+  "packageDescriptionSummary" : "CPack ops project",
+  "packageName" : "cann_ops_adv",
+  "packageVersion" : "0.1.1",
+  "projects" : 
+  [
+    {
+      "component" : "ALL",
+      "components" : [],
+      "directory" : "/root/Main/cann-ops-master/build",
+      "installationTypes" : [],
+      "projectName" : "cann_ops_adv",
+      "subDirectory" : "/"
+    }
+  ],
+  "setDestdir" : false,
+  "stripFiles" : false,
+  "warnOnAbsoluteInstallDestination" : false
+}

@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -s -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -shared -Wl,-soname,libcust_opapi.so -o libcust_opapi.so CMakeFiles/opapi.dir/opapi_stub.cpp.o   -L/usr/local/Ascend/ascend-toolkit/latest/lib64  -Wl,--whole-archive libops_aclnn.a -Wl,--no-whole-archive -lopapi -lnnopbase -lprofapi -lge_common_base -lascend_dump -lascendalog -ldl 

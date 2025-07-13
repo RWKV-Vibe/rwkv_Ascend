@@ -1,0 +1,2 @@
+/usr/bin/ar qc libops_aclnn.a  CMakeFiles/ops_aclnn.dir/build/autogen/aclnn_wkv7.cpp.o CMakeFiles/ops_aclnn.dir/build/autogen/aclnn_wkv7grad.cpp.o CMakeFiles/ops_aclnn.dir/build/autogen/aclnn_wkv6.cpp.o
+/usr/bin/ranlib libops_aclnn.a
