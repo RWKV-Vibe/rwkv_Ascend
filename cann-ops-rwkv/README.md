@@ -34,10 +34,14 @@ cann-ops仓关键目录如下所示：
 | [wkv7](./src/rwkv7/wkv7)  | Time_mixing中的wkv7前向算子(vector)  |  Ascend C |
 | [wkv7grad](./src/rwkv7/wkv7grad)  | Time_mixing中的wkv7grad反向算子(cube & vector)  |  Ascend C |
 
-## 📝 硬件支持说明（310B、310P、910A、910B）
-略~~~
+## 📝 硬件支持说明
+- Atlas 训练系列产品
+- Atlas 推理系列产品
+- Atlas A2训练系列产品
+- Atlas 800I A2推理产品
+- Atlas 200I/500 A2推理产品
 
-
+产品形态详细说明请参见[昇腾产品形态说明](https://www.hiascend.com/document/redirect/CannCommunityProductForm)。
 
 
 ## 📄 许可证书
