@@ -36,14 +36,19 @@
 
 - 实现逻辑
 ```python
-def channel_mixing(x: torch.Tensor, h0: torch.Tensor, x_k: torch.Tensor, ffn_key_weight: torch.Tensor, ffn_value_weight: torch.Tensor) -> torch.Tensor:
+def channel_mixing(x: torch.Tensor, h0: torch.Tensor, x_k: torch.Tensor, ffn_key: torch.Tensor, ffn_value: torch.Tensor) -> torch.Tensor:
     """
     通道混合函数。
 
     Args:
         x (torch.Tensor): 输入张量，形状为[Batch, Seq_length, N_embd]。
+        h0 (torch.Tensor): 输入张量(state状态)，形状为[Batch, 1, N_embd]。
+        x_k (torch.Tensor): 输入张量(模型权重），形状为[1, 1, N_embd]。
+        ffn_key (torch.Tensor): 输入张量(模型权重），形状为[4*N_embd, N_embd]。
+        ffn_value (torch.Tensor): 输入张量(模型权重），形状为[N_embd, 4*N_embd]。
     Returns:
-        torch.Tensor: 混合后的张量，形状与输入的x相同。
+        out (torch.Tensor): 输出张量，形状为[Batch, Seq_length, N_embd]。
+        ht (torch.Tensor): 输出张量(state状态),形状为[Batch, 1, N_embd]。
     """
     batch_size, seq_length = x.shape[0], x.shape[1]
     # Token shift
@@ -57,9 +62,9 @@ def channel_mixing(x: torch.Tensor, h0: torch.Tensor, x_k: torch.Tensor, ffn_key
         ht = x[:, -1, :]
     xk = x + sx * x_k
 
-    k = torch.relu(xk @ ffn_key_weight.T).pow(2)
+    k = torch.relu(xk @ ffn_key.T).pow(2)
 
-    return k @ ffn_value_weight.T, ht
+    return k @ ffn_value.T, ht
 
 # 调用样例
 out, state = channel_mixing(x, state, xk, kw, vw)

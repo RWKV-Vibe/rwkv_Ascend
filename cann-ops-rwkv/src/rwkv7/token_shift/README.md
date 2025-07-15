@@ -54,8 +54,11 @@ def token_shift(x: torch.Tensor, rwkvag: torch.Tensor, h0: torch.Tensor) -> torc
 
     Args:
         x (torch.Tensor): 输入张量，形状为[Batch, Seq_length, N_embd]。
+        rwkvag (torch.Tensor): 输入张量(模型权重），形状为[5, 1, 1, N_embd]。
+        h0 (torch.Tensor): 输入张量(state状态)，形状为[Batch, 1, N_embd]。
     Returns:
-        torch.Tensor: 混合后的张量，形状与输入的x相同。
+        xr，xw, xk, xv, xa, xg (torch.Tensor)：输出r, w, k, v, a, g混合后的张量，形状均为[Batch, Seq_length, N_embd]
+        ht (torch.Tensor): 输出张量(state状态),形状为[Batch, 1, N_embd]。
     """
     batch_size, seq_length = x.shape[0], x.shape[1]
     if seq_length == 1:
