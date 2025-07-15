@@ -1,5 +1,4 @@
-# channel_mixing Vector
-
+# channel_mixing
 ## 贡献说明
 | 贡献者    | 贡献方  | 贡献算子                | 贡献时间      | 贡献内容                    |
 |--------|------|---------------------|-----------|-------------------------|
@@ -47,7 +46,7 @@ def channel_mixing(x: torch.Tensor, h0: torch.Tensor, x_k: torch.Tensor, ffn_key
         torch.Tensor: 混合后的张量，形状与输入的x相同。
     """
     batch_size, seq_length = x.shape[0], x.shape[1]
-    
+    # Token shift
     if seq_length == 1:
         sx = h0 - x
         ht = x
@@ -56,13 +55,10 @@ def channel_mixing(x: torch.Tensor, h0: torch.Tensor, x_k: torch.Tensor, ffn_key
         h0 = torch.cat([h0, x[:, :-1, :]], dim=1)
         sx = (h0 - x)
         ht = x[:, -1, :]
-    # Token shift
     xk = x + sx * x_k
-    
-    # 等价于 self.ffn_key(xk) = xk @ W_key^T
-    k = self.relu(xk @ ffn_key_weight.T).pow(2)
 
-    # 等价于 self.ffn_value(k) = k @ W_value^T
+    k = torch.relu(xk @ ffn_key_weight.T).pow(2)
+
     return k @ ffn_value_weight.T, ht
 
 # 调用样例
