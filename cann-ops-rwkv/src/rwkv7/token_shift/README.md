@@ -6,8 +6,6 @@
 | appleinsky | rwkv&昇腾 | token_shift | 2025/7/13 | 新增token_shift算子 |
 
 ## 支持的产品型号
-
-- Atlas A2训练系列产品
 - Atlas 推理系列产品
 - Atlas 200I/500 A2 推理产品
 ## 算子描述
