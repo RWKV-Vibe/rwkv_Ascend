@@ -72,5 +72,5 @@ out, state = channel_mixing(x, state, xk, kw, vw)
 接口:
 
 ```cpp
-extern "C" __global__ __aicore__ void channel_mixing(GM_ADDR x, GM_ADDR h0, GM_ADDR xk, GM_ADDR kw, GM_ADDR vw, GM_ADDR workspace, GM_ADDR tiling)
+extern "C" __global__ __aicore__ void channel_mixing(GM_ADDR x, GM_ADDR h0, GM_ADDR xk, GM_ADDR kw, GM_ADDR vw, GM_ADDR o, GM_ADDR ht, GM_ADDR workspace, GM_ADDR tiling)
 ```

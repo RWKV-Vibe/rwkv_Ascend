@@ -83,5 +83,5 @@ xr，xw, xk, xv, xa, xg, ht = token_shift(x, rwkvag, h0)
 接口:
 
 ```cpp
-extern "C" __global__ __aicore__ void token_shift(GM_ADDR x, GM_ADDR rwkvag, GM_ADDR h0, GM_ADDR workspace, GM_ADDR tiling)
+extern "C" __global__ __aicore__ void token_shift(GM_ADDR x, GM_ADDR rwkvag, GM_ADDR h0, GM_ADDR xr，GM_ADDR xw, GM_ADDR xk, GM_ADDR xv, GM_ADDR xa, GM_ADDR xg, GM_ADDR ht, GM_ADDR workspace, GM_ADDR tiling)
 ```
