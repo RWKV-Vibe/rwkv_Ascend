@@ -23,17 +23,17 @@
     <tr><td rowspan="1" align="center">算子类型(OpType)</td><td colspan="4" align="center">WKV7</td></tr>
     </tr>
     <tr><td rowspan="8" align="center">算子输入</td><td align="center">name</td><td align="center">shape</td><td align="center">data type</td><td align="center">format</td></tr>
-    <tr><td align="center">query</td><td align="center">B,T,H,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">key</td><td align="center">B,T,H,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">value</td><td align="center">B,T,H,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">weight</td><td align="center">B,T,H,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">a(-kk)</td><td align="center">B,T,H,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">b(kk * a)</td><td align="center">B,T,H,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">h0</td><td align="center">B,T,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">query</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">key</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">value</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">weight</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">a(-kk)</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">b(kk * a)</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">h0</td><td align="center">B,H,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
     </tr>
     </tr>
-    <tr><td rowspan="2" align="center">算子输出</td><td align="center">output</td><td align="center">B,T,H,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
-    <td align="center">ht</td><td align="center">B,T,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
+    <tr><td rowspan="2" align="center">算子输出</td><td align="center">output</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
+    <td align="center">ht</td><td align="center">B,H,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
     </tr>
   </table>
 
