@@ -59,11 +59,8 @@ def channel_mixing(x: torch.Tensor, h0: torch.Tensor, x_k: torch.Tensor, ffn_key
         sx = (h0 - x)
         ht = x[:, -1, :]
     xk = x + sx * x_k
-
     k = torch.relu(xk @ ffn_key.T).pow(2)
-
     return k @ ffn_value.T, ht
-
 # 调用样例
 out, state = channel_mixing(x, state, xk, kw, vw)
 

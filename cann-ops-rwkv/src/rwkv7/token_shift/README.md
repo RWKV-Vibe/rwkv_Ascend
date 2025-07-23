@@ -73,9 +73,7 @@ def token_shift(x: torch.Tensor, rwkvag: torch.Tensor, h0: torch.Tensor) -> torc
     xv = x + rwkvag[3] * sx
     xa = x + rwkvag[4] * sx
     xg = x + rwkvag[5] * sx
-
     return xr，xw, xk, xv, xa, xg, ht
-
 # 调用样例
 xr，xw, xk, xv, xa, xg, ht = token_shift(x, rwkvag, h0)
 ```
