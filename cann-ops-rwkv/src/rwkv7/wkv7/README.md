@@ -29,11 +29,11 @@
     <tr><td align="center">weight</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
     <tr><td align="center">a(-kk)</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
     <tr><td align="center">b(kk * a)</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">h0</td><td align="center">B,T,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">h0</td><td align="center">B,H,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
     </tr>
     </tr>
     <tr><td rowspan="2" align="center">算子输出</td><td align="center">output</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
-    <td align="center">ht</td><td align="center">B,T,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
+    <td align="center">ht</td><td align="center">B,H,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
     </tr>
   </table>
 

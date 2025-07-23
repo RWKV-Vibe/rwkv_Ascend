@@ -28,11 +28,11 @@
     <tr><td align="center">r</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
     <tr><td align="center">a</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
     <tr><td align="center">b</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
-    <tr><td align="center">h0</td><td align="center">B,T,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
+    <tr><td align="center">h0</td><td align="center">B,H,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
     </tr>
     </tr>
     <tr><td rowspan="2" align="center">算子输出</td><td align="center">o</td><td align="center">B,T,H,N</td><td align="center">int8、float16、float</td><td align="center">ND</td></tr>
-    <td align="center">ht</td><td align="center">B,T,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
+    <td align="center">ht</td><td align="center">B,H,N,N</td><td align="center">float16、float</td><td align="center">ND</td></tr>
     </tr>
   </table>
 
@@ -44,29 +44,32 @@ def wkv7(k: torch.Tensor, v: torch.Tensor, w: torch.Tensor, r: torch.Tensor,  a:
 
     Args:
         k, v, w, r, a, b (torch.Tensor): 输入张量，形状为[Batch, Seq_length, head_size, head_dim]。
-        h0 (torch.Tensor): 输入张量(state状态)，形状为[Batch, 1, head_dim, head_dim]。
+        h0 (torch.Tensor): 输入张量(state状态)，形状为[Batch, head_size, head_dim, head_dim]。
     Returns:
         out (torch.Tensor)：输出张量，形状为[Batch, Seq_length, head_size, head_dim]
-        ht (torch.Tensor): 输出张量(state状态),形状为[Batch, 1, head_dim, head_dim]。
+        ht (torch.Tensor): 输出张量(state状态),形状为[Batch, head_size, head_dim, head_dim]。
     """
     B, T, H, N = k.shape
-    vk = value.view(B, T, H, N, 1) @ key.view(B, T, H, 1, N)
+    vk = v.view(B, T, H, N, 1) @ k.view(B, T, H, 1, N)
     w = torch.exp(w)
-    if T == 1: 
+    if T == 1:
         ab = a.view(B, T, H, N, 1) @ b.view(B, T, H, 1, N)
+        w = w.view(B, T, H, 1, N)
+        r = r.view(B, T, H, N, 1)
         ht = h0 * w + (h0 @ ab) + vk
-        x = ht @ r
+        out = ht @ r
     else:
         b = b.view(B, T, H, 1, N)
         a = a.view(B, T, H, N, 1)
-        x = torch.zeros(B, T, H, N, 1, device=k.device,dtype=vk.dtype)
+        out = torch.zeros(B, T, H, N, 1, device=k.device,dtype=vk.dtype)
         w = w.view(B, T, H, 1, N)
         r = r.view(B, T, H, N, 1)
         for i in range(T):
-            ht = h0 * w[:, i, : , :, :] + (h0 @ a[:, i, :, :, :] @ b[:, i, :, :, :]) + vk[:, i, :, :, :]
-            x[:, i, :, :, :] = ht @ r[:, i, :, :, :]
-        x = x.view(B, T, H, 1, N)
-
+            h0 = h0 * w[:, i, : , :, :] + (h0 @ a[:, i, :, :, :] @ b[:, i, :, :, :]) + vk[:, i, :, :, :]
+            out[:, i, :, :, :] = h0 @ r[:, i, :, :, :]
+        out = out.view(B, T, H, 1, N)
+        ht = h0
+    return out, ht
 # 调用样例
 o, ht = wkv7(k, v, w, r, a, b, h0)
 ```
